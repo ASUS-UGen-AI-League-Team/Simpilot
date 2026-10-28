@@ -1,6 +1,10 @@
-# AI-Assisted Prediction and Analysis of Phase-Separated Morphology in Amphiphilic Polymer Conetworks
+# LLM說什麼都隊
 
-**ASUS UGen AI League 2026 | Stage I — Project Proposal**
+**ASUS UGen AI League 2026 | Stage I Proposal**
+
+## Project Title
+
+AI-Assisted Prediction and Analysis of Phase-Separated Morphology in Amphiphilic Polymer Conetworks
 
 ## 1. Project Overview
 
