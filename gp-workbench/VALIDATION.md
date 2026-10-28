@@ -29,3 +29,10 @@ python scripts/check_release.py
 The first command uses disposable fixtures and local HTTP only. The second writes a new execution under `runtime/`. The scanner prints categories and filenames, never matched secret values. To validate an edited source tree rather than the immutable release file list, use `python scripts/check_release.py --source-tree`.
 
 If environment policy rejects a loopback bind, report that failure separately; do not disable endpoint protection/firewall to obtain a pass. If a Python installer cannot write its temporary directory, use a writable per-process temporary directory; this does not require changing the machine's global protections.
+
+
+## Public benchmark documentation supplement - 2026-10-28
+
+Numerical outputs from the isolated-environment run above are now included through explicit scientific-field allowlists. See BENCHMARK.md and benchmarks/five_recipe_low_q/metadata.json. Recorded model-engine hashes match the shipped implementation. Five-recipe data and runtime source are unchanged.
+
+No training, HTTP/browser check, unit test, dependency lookup or application execution was repeated for this supplement. Packaging review covers documents, static figure layouts, field selection, relative links, hashes and ZIP contents. It does not extend previously validated operating systems, scientific evidence or security scope.

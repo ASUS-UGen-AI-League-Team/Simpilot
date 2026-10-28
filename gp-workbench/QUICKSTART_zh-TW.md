@@ -17,3 +17,12 @@ python run_example.py --out runtime
 q*、M、低 q 保留各自的目標定義。這五份資料對 q* 可能無法通過峰值篩查，請以實際診斷解讀。完整功能與限制見英文 README、FEATURES.md 及 DATA_AND_METHODS.md。
 
 這是獨立的發佈副本，未包含私人 raw 資料、Google 憑證、既有模型／報告或 Git 歷史。請僅上傳此資料夾內容；對外公開前仍需確認合作資料及程式的授權條款。詳細安全檢查結果見 SECURITY_REVIEW.md。
+
+
+## 架構、模型與範例結果
+
+- [系統架構圖](ARCHITECTURE.md)：目前已實作的平台與本機資料流程。
+- [模型說明](MODEL_CARD.md)：輸入輸出、kernel、訓練設定與限制。
+- [實際模型比較](BENCHMARK.md)：五配方留出預測、分數與圖；三個內部點插值和兩個端點外插分開呈現。
+- 數值表在 `benchmarks/five_recipe_low_q/`，取自 2026-10-27 已完成的驗證，2026-10-28 整理入包；沒有為補文件而重新訓練。
+- AI agent 自動調度與 20% run saving 尚未成為已驗證成果。

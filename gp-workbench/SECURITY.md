@@ -26,3 +26,8 @@ No real Google account, filesystem ACLs, browser-extension state or machine fire
 Publish only the explicit release contents in RELEASE_FILES.json, using a new repository history. Do not copy the private research checkout, .git, credentials, project exports, runtime outputs, caches, trained models or old logs. Use `.gitignore` as a second layer, not the sole control. Before each upload run the included local scan and inspect the file list. The scanner is a targeted leak check, not a guarantee of complete secret detection.
 
 If a real secret has been committed or shared, removing it from the current file is insufficient: revoke/rotate it and inspect repository history. The provided package starts without Git history; no private history has been imported.
+
+
+### Curated public benchmark
+
+`benchmarks/five_recipe_low_q/` is an explicit exception for reviewed scientific-field exports. This does not authorize uploading generated `runtime/` folders, complete training audits, original reports or trained models. Newly generated outputs still need a separate privacy review.

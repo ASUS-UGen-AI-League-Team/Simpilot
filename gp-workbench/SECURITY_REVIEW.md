@@ -40,3 +40,10 @@ No research files, credentials or local paths were submitted in these lookups; o
 - The local source tree had no `.git` directory at the inspected root, and no history was copied into this release. This is not an assertion that all other repositories or old shared copies are clean. Use new repository history; importing any old history requires a separate historical secret review.
 
 No repository has been created/pushed, no Google account accessed, no credentials included, and no firewall/port-forwarding/protection setting changed.
+
+
+## Documentation supplement - 2026-10-28
+
+The public benchmark uses allowlisted scientific fields rather than a copied runtime folder. It includes already supplied targets, held-out predictions, metrics, fitted parameters, warnings, fingerprints and software versions. Source paths, Drive identities, accounts, original HTML reports, complete private audits and loadable models remain excluded.
+
+Figures are static text-based SVG with Mermaid source. They contain no scripts, executable objects or external resource links. No service code, dependencies, network settings or access controls changed. Packaging/privacy review does not repeat or broaden earlier platform tests or the time-bound dependency lookup.

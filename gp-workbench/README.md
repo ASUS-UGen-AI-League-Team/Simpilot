@@ -4,6 +4,21 @@ A local research workbench for extracting structural targets from simulation cur
 
 **Start with the five bundled recipe CSVs. No Google account, H: drive, Anaconda installation, raw coordinates or API key is needed.** The interface is primarily Traditional Chinese; this README provides the evaluation steps in English. [繁中快速說明](QUICKSTART_zh-TW.md).
 
+## Architecture, model information and recorded results
+
+![Implemented local architecture](docs/assets/architecture.svg)
+
+- [System architecture](ARCHITECTURE.md): implemented components and local data flow; editable Mermaid source included.
+- [Model card](MODEL_CARD.md): inputs/outputs, kernels, optimizer and fitted parameters, and evidence limits.
+- [Recorded benchmark](BENCHMARK.md): actual five-recipe held-out results and full-precision CSVs.
+- [Software/reproducibility validation](VALIDATION.md): environment and checks actually completed.
+
+The shipped product is the GP workbench. LLM agent orchestration, active learning and automated MD dispatch are future integration work.
+
+![Recorded held-out comparison](docs/assets/model_comparison.svg)
+
+Three GP kernels and two baselines are compared on five recipes, one seed each. Interior interpolation (n=3) and endpoint extrapolation (n=2) are separate. These exploratory results do not measure simulation savings or independently establish model superiority.
+
 ## Install
 
 Reference runtime: **CPython 3.13.9, 64-bit**. See [VALIDATION.md](VALIDATION.md) for the actual tested environment; other operating systems are not claimed as tested. The runtime requirements are fully pinned, including transitive dependencies. Internet access is needed to install wheels; the bundled CSV workflow does not make network requests after installation.
