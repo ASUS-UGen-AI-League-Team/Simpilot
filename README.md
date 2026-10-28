@@ -129,6 +129,8 @@ The AI Agent will primarily support workflow automation and tool integration rat
 ## 5. Proposed System Architecture
 
 The proposed framework integrates numerical simulations, machine learning predictions, and AI-assisted workflow automation.
+<img width="3200" height="1960" alt="042E26D7-DAA4-4F6F-848B-9BEE8D5CDF08" src="https://github.com/user-attachments/assets/43291c7a-0ff4-41a6-9e73-f4768a664c91" />
+
 
 ### 5.1 Simulation and Data Preparation
 
