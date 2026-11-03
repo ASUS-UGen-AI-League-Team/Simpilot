@@ -1,403 +1,509 @@
-# LLM說什麼都隊
+# SimPilot
+
+### Where Machine Learning and AI Agents Unite for Scientific Discovery
 
 **ASUS UGen AI League 2026 | Stage I Proposal**
 
-## Project Title
+**Team:** LLM說什麼都隊  
+**Institution:** National Tsing Hua University
 
-AI-Assisted Prediction and Analysis of Phase-Separated Morphology in Amphiphilic Polymer Conetworks
+---
 
 ## 1. Project Overview
 
-This project proposes an AI-assisted computational framework for predicting and analyzing the phase-separated morphology of **Amphiphilic Polymer Conetworks (APCNs)**.
+**SimPilot** is a proposed AI-assisted scientific research platform that integrates machine learning, local AI agents, and computational simulation workflows.
 
-By integrating **C++-based numerical simulations**, **machine learning surrogate models**, and **AI Agents**, we aim to accelerate structural prediction, reduce repetitive computational workloads, and streamline scientific simulation and analysis workflows.
+Our goal is to help researchers answer scientific questions more efficiently by combining the predictive capabilities of machine learning with the planning and tool-calling capabilities of AI agents.
 
-The proposed machine learning framework consists of two complementary approaches:
+The platform is designed around three principles:
 
-- **Gaussian Process (GP):** Prediction of scattering-related structural descriptors, including characteristic wavevectors and other quantities derived from simulation data.
-- **Fourier Neural Operator (FNO) — Planned:** Prediction of spatial phase-separated morphology and its temporal evolution using simulation-derived concentration fields.
+- **Predict:** Use machine learning surrogate models to estimate scientific quantities and quantify prediction uncertainty.
+- **Act:** Use AI agents to coordinate computational tools, analyze results, and recommend informative simulation tasks.
+- **Verify:** Keep researchers in control through human approval, independent validation, and physics-based simulations.
 
-An AI Agent-assisted workflow is proposed to coordinate model selection, prediction, data analysis, and visualization.
+The initial case study focuses on **Amphiphilic Polymer Conetworks (APCNs)**, using simulation-derived structural data to demonstrate the proposed workflow.
 
-The long-term objective is to establish an extensible computational platform that supports both structural characterization and spatial morphology prediction.
+The machine learning framework includes:
 
-**Current Status:** Stage I — Initial GP Implementation and Planned FNO Development
+- **Gaussian Process (GP):** Structural descriptor prediction and uncertainty estimation.
+- **Fourier Neural Operator (FNO):** Planned spatial morphology and temporal evolution prediction.
 
-## 2. Background
+SimPilot is intended to support future research applications through a modular prediction target architecture.
 
-Amphiphilic Polymer Conetworks (APCNs) are polymer networks composed of covalently interconnected hydrophilic and hydrophobic components.
+**Current Status:** Stage I Prototype — GP Workbench Available; AI Agent Integration and FNO Development Planned.
 
-Due to thermodynamic incompatibility between these components, APCNs can exhibit nanoscale phase-separated structures.
+## 2. Motivation and Problem Statement
 
-Their morphology can influence important material properties, including:
+Scientific simulations are essential for understanding complex physical and material systems. However, computational research often requires repeated simulations, manual analysis, and substantial computing resources.
 
-- Swelling behavior
-- Mechanical properties
-- Optical properties
-- Transport characteristics
+A conventional research workflow may include:
 
-Understanding phase-separation mechanisms and structural evolution is essential for investigating the behavior of these polymer networks.
+1. Preparing simulation configurations.
+2. Submitting jobs to a high-performance computing (HPC) cluster.
+3. Waiting for computational resources.
+4. Executing numerical simulations.
+5. Transferring and processing simulation outputs.
+6. Analyzing and visualizing results.
 
-Our research focuses on a specific APCN system investigated through C++-based numerical simulations.
+This workflow introduces several challenges:
 
-The temperature is held constant, while selected Lennard-Jones interaction parameters can be varied to examine their influence on structural behavior.
+- Long simulation and queue times.
+- High computational costs for repeated parameter exploration.
+- Manual coordination between different scientific tools.
+- Difficulty selecting the most informative simulation conditions.
+- Limited integration between numerical simulation, machine learning, and research interpretation.
 
-Scattering-related quantities, such as structure factors and characteristic wavevectors, provide information about structural length scales and phase-separation evolution.
+### Our Approach
 
-Spatial concentration fields can provide additional information about the distribution and evolution of polymer-rich and polymer-poor regions.
+Instead of performing a complete simulation for every new research question, SimPilot aims to use existing simulation data to provide initial predictions.
 
-However, exploring different simulation conditions and analyzing complex spatial structures may require substantial computational resources.
+An AI agent can then help identify conditions that require further validation, while researchers retain approval authority over computationally expensive simulation runs.
 
-## 3. Problem Statement
+The proposed workflow follows a **human-in-the-loop active learning** strategy:
 
-The existing computational workflow relies on **C++-based numerical simulations** to investigate polymer phase separation and structural evolution.
+**Predict → Recommend → Researcher Approval → Simulate → Validate → Update**
 
-The workflow generally involves:
+The objective is not to replace scientific simulations, but to reduce unnecessary repetitions and improve the efficiency of computational research.
 
-1. Preparing simulation configurations and interaction parameters.
-2. Executing C++ numerical simulations using available computing resources.
-3. Generating and collecting simulation outputs.
-4. Processing structural and trajectory data.
-5. Calculating scattering-related quantities and analyzing structural evolution.
-6. Visualizing and interpreting simulation results.
+## 3. Core Platform Features
 
-Several challenges may arise:
+### 3.1 Machine Learning Prediction
 
-- High computational costs associated with repeated simulations.
-- Time-consuming exploration of different interaction parameters.
-- Dependence on available high-performance computing (HPC) resources.
-- Manual processing and analysis of simulation outputs.
-- Difficulty predicting complex spatial morphology evolution.
-- Limited integration between simulation, machine learning, and visualization tools.
+SimPilot incorporates machine learning surrogate models for predicting scientific quantities from simulation-derived datasets.
 
-These challenges motivate the development of an AI-assisted computational framework that can reuse existing simulation data for structural prediction and support more efficient scientific workflows.
+The existing GP Workbench supports structural descriptor prediction, model comparison, and predictive uncertainty analysis.
 
-## 4. Proposed Solution
+Future model extensions may include:
 
-We propose a modular computational framework combining four components:
+- Random Forest
+- XGBoost
+- Neural Networks
+- Fourier Neural Operators
+- Other compatible scientific machine learning architectures
 
-1. Gaussian Process-based structural prediction.
-2. Fourier Neural Operator-based morphology prediction (planned).
-3. A modular prediction target system.
-4. AI Agent-assisted workflow coordination.
+Additional models will require suitable data interfaces and independent validation before integration.
 
-### 4.1 Gaussian Process-Based Surrogate Model
+### 3.2 Local AI Agent — In Development
 
-A **Gaussian Process (GP)-based surrogate modeling framework** has been developed for investigating structural quantities derived from numerical simulations.
+The proposed AI agent will serve as an interface between researchers and computational tools.
 
-The GP Workbench includes functionality for extracting and analyzing selected structure-factor-related targets.
+Planned capabilities include:
 
-Current implemented targets include:
+- Understanding research questions expressed in natural language.
+- Checking available datasets and model configurations.
+- Selecting suitable prediction and analysis tools.
+- Submitting authorized machine learning tasks.
+- Monitoring computational workflows.
+- Interpreting model outputs and predictive uncertainty.
+- Recommending candidate simulation conditions.
+- Generating research reports.
 
-- **Characteristic Peak Wavevector, q\*:** A characteristic wavevector determined from an identifiable peak in the time-averaged structure factor under defined screening rules.
-- **Normalized Spectral Excess, M:** A structure-factor-derived scalar quantity calculated over a specified wavevector range.
-- **Low-q Mean:** A low-wavevector structural descriptor calculated using defined shell-averaging procedures.
+Scientific numerical results should originate from validated computational tools rather than unsupported language-model generation.
 
-Additional scattering-related research targets may include:
+### 3.3 Human-in-the-Loop Workflow
 
-- Scattering intensity or structure-factor profiles, I(q) or S(q), according to the adopted definition.
-- Peak position, q_peak.
-- Time evolution of characteristic peak positions, q_peak(t).
+SimPilot is designed to preserve researcher control over important computational decisions.
 
-Where applicable, a characteristic structural length scale can be estimated using:
+The proposed workflow includes:
 
-L(t) ≈ 2π / q_peak(t)
+- Researcher-selected models and parameters.
+- Visible job progress and execution logs.
+- Approval checkpoints before selected computational actions.
+- Explicit researcher authorization before launching HPC simulation jobs.
+- Traceable model predictions and validation reports.
 
-The existing GP Workbench provides model comparison, baseline models, cross-validation, and predictive uncertainty analysis.
+The full AI agent monitoring and approval workflow remains a planned integration component.
 
-The currently bundled GP dataset uses five recipe labels. The physical interpretation of these labels and their relationship to future Lennard-Jones parameter studies require confirmation.
+## 4. Machine Learning Framework
 
-The GP approach is intended to accelerate the prediction of selected structural descriptors within validated conditions rather than directly reconstruct complete three-dimensional morphologies.
+### 4.1 Gaussian Process Workbench
 
-### 4.2 Fourier Neural Operator (FNO) — Planned
+The **Gaussian Process (GP) Workbench** is the initial machine learning component of SimPilot.
 
-In addition to GP-based structural prediction, we plan to investigate **Fourier Neural Operators (FNOs)** for predicting the spatial evolution of phase-separated morphologies in APCNs.
+It uses simulation-derived structural data to build regression models and compare their predictive performance.
 
-FNO is a neural operator architecture designed to learn mappings between functions, making it a potential approach for learning the evolution of spatial fields generated by numerical simulations.
+The available research implementation supports three principal targets:
 
-Unlike the GP Workbench, which currently focuses on selected structural descriptors, the proposed FNO module will investigate **full-field morphology prediction**.
+**Characteristic Peak Wavevector — q\***
 
-Potential model inputs include:
+A characteristic wavevector extracted from an identifiable peak in the time-averaged structure factor under defined screening rules.
+
+**Normalized Spectral Excess — M**
+
+A scalar descriptor calculated from the normalized structure factor over a specified wavevector band.
+
+**Low-q Mean**
+
+A structural descriptor derived from the low-wavevector region using defined shell-averaging procedures.
+
+These quantities help characterize structural correlations in the simulated system. They do not independently establish complete three-dimensional morphology or phase connectivity.
+
+#### GP Model Features
+
+The GP Workbench includes:
+
+- Linear, RBF, Matérn 3/2, Matérn 5/2, and Rational Quadratic kernel options.
+- Mean and linear regression baselines.
+- Leave-one-recipe-out validation.
+- Training-fold-only preprocessing.
+- Predictive uncertainty estimates.
+- Model comparison and evaluation reports.
+- A local web-based research interface.
+
+The bundled example dataset contains five real simulation-derived structure-factor datasets, with one seed per recipe.
+
+These data support preliminary model development and evaluation, but do not establish reliable seed variability or universal model performance.
+
+Additional research targets may include scattering peak positions, characteristic structural lengths, and time-dependent scattering quantities.
+
+The definitions and availability of these targets must be confirmed for each dataset.
+
+### 4.2 Fourier Neural Operator — Planned
+
+The **Fourier Neural Operator (FNO)** is proposed as an additional machine learning component for predicting spatial morphology fields.
+
+Unlike scalar regression models, neural operators can learn mappings between spatially distributed input and output fields.
+
+The proposed FNO research direction focuses on predicting the evolution of phase-separated structures.
+
+Potential inputs include:
 
 - Initial spatial concentration or composition fields.
-- Selected Lennard-Jones interaction parameters.
-- Simulation time or prediction time interval.
-- Additional physical descriptors, where available and scientifically justified.
+- Selected simulation parameters.
+- Prediction time intervals.
+- Relevant physical descriptors.
 
-The proposed output is a predicted spatial morphology field, potentially represented as:
+The proposed output is a predicted spatial field:
 
 **φ(r, t + Δt)**
 
-where φ describes a spatial concentration or composition field.
+where φ represents a spatial concentration or composition field.
 
-Potential research objectives include:
+Candidate model architectures include:
 
-- Predicting future phase-separated structures from an initial state.
-- Investigating spatial morphology evolution over time.
-- Evaluating how interaction parameters influence structural evolution.
-- Reducing the computational requirements of selected simulation tasks within validated conditions.
+- Fourier Neural Operator (FNO)
+- U-FNO
+- Multi-Head Neural Operator (MHNO)
 
-The initial development will focus on establishing suitable field representations, preparing simulation datasets, and conducting feasibility tests.
+Potential tasks include:
 
-Two-dimensional proof-of-concept experiments may be considered before extending the model to full three-dimensional morphology prediction.
+- Predicting future spatial morphologies.
+- Learning temporal evolution of concentration fields.
+- Comparing predicted and reference phase structures.
+- Evaluating structural characteristics derived from predicted fields.
 
-**Development Status:** The FNO module is currently planned and has not yet been implemented or validated.
+The proposed FNO workflow requires spatially resolved simulation data. The availability and mapping of FPD-style concentration fields and C++ simulation outputs must be established before training.
 
-### 4.3 Modular Prediction Target System
+**Development Status:** Planned research and validation; full APCN-specific FNO performance has not yet been established.
 
-The proposed framework adopts a modular architecture to support different scientific prediction targets.
+### 4.3 Modular Prediction Target Architecture
 
-A **Target Module** converts simulation data into suitable target representations according to the research question.
+Different scientific questions may require different prediction targets.
 
-For example:
+SimPilot proposes a **Target Module** that converts simulation outputs into representations suitable for specific machine learning tasks.
 
-- Scattering-derived structural descriptors can be prepared for GP-based regression.
-- Spatial concentration fields can be prepared for FNO-based morphology prediction.
-- Additional research targets may be introduced through corresponding data preparation and validation procedures.
+The architecture separates target-specific scientific processing from reusable model training and validation components.
 
-The purpose of this modular design is to separate target-specific scientific processing from reusable machine learning infrastructure.
+Two primary target categories are proposed:
 
-Different prediction tasks may require different model configurations, training procedures, and evaluation metrics.
+| Target Category | Model Approach | Example Outputs |
+|---|---|---|
+| Scalar Targets | Gaussian Process | q*, M, low-q mean, characteristic structural descriptors |
+| Field Targets | Fourier Neural Operator | Spatial concentration fields and morphology evolution |
 
-By providing compatible data interfaces, the framework aims to support future research extensions without rebuilding the entire computational workflow.
+This modular approach is intended to support additional scientific questions without redesigning the complete research workflow.
 
-### 4.4 AI Agent-Assisted Workflow
-
-An **AI Agent-based system** is proposed to coordinate computational tasks and simplify interactions between researchers, numerical simulations, and machine learning models.
-
-Potential functions include:
-
-- Interpreting user-defined research requests.
-- Identifying suitable prediction targets and computational tools.
-- Preparing simulation and prediction inputs.
-- Coordinating available C++ simulation tools.
-- Executing validated GP models and future FNO models.
-- Analyzing structural predictions and model uncertainty.
-- Generating visualizations and research reports.
-- Assisting researchers in identifying conditions requiring additional validation.
-
-The AI Agent will primarily support workflow coordination and tool integration.
-
-Numerical simulation execution and scientifically consequential decisions will remain subject to researcher approval.
+Different targets may still require independent models, preprocessing procedures, and validation metrics.
 
 ## 5. Proposed System Architecture
 
-The proposed **SimPilot** framework integrates numerical simulations, machine learning prediction modules, and AI-assisted workflow automation.
+SimPilot proposes a local AI and machine learning platform using two ASUS UGen computing nodes.
 
-<img width="3200" height="1960" alt="042E26D7-DAA4-4F6F-848B-9BEE8D5CDF08" src="https://github.com/user-attachments/assets/43291c7a-0ff4-41a6-9e73-f4768a664c91" />
+<img width="3200" height="1960" alt="SimPilot system architecture" src="https://github.com/user-attachments/assets/43291c7a-0ff4-41a6-9e73-f4768a664c91" />
 
-*Figure 1. SimPilot system architecture showing the proposed integration of a local AI Agent, GP Workbench, data management, and HPC-based numerical simulations. FNO is included as a planned extension.*
+*Figure 1. Proposed SimPilot architecture integrating a local AI agent, a machine learning engine, a data layer, and researcher-approved HPC simulations. The GP Workbench is the initial available component; additional model and agent capabilities are under development or planned.*
 
-### 5.1 Simulation and Data Preparation
+### 5.1 ASUS UGen Node 1 — AI Agent
 
-**C++ Numerical Simulation → Simulation Outputs → Data Preprocessing → Research Dataset**
+**Proposed Hardware:** Intel Arc Pro B70, 32 GB
 
-C++-based numerical simulations provide reference data for investigating structural evolution and developing machine learning models.
+Planned responsibilities:
 
-Different prediction objectives require different representations of simulation data.
+- Local LLM inference.
+- Natural-language research interaction.
+- Tool calling and workflow coordination.
+- Job monitoring and human approval checkpoints.
+- Prediction interpretation and reporting.
+- Candidate simulation recommendations.
 
-For GP-based structural prediction, simulation-derived structure factors and other structural quantities can be processed into scalar prediction targets.
+A locally deployed LLM is intended to reduce dependence on external AI APIs.
 
-For the planned FNO module, spatially resolved simulation data will be needed to construct suitable two-dimensional or three-dimensional concentration fields.
+Candidate inference technologies include Ollama and Intel-compatible local inference frameworks, subject to compatibility and performance testing.
 
-The availability, temporal resolution, and completeness of the required spatial data will be evaluated before FNO training.
+### 5.2 ASUS UGen Node 2 — Machine Learning Engine
 
-### 5.2 Machine Learning Prediction
+**Proposed Hardware:** Intel Arc Pro B70, 32 GB
 
-The proposed machine learning framework contains two complementary prediction pathways.
+Planned responsibilities:
 
-**Pathway A — Gaussian Process**
+- GP model training and prediction.
+- Kernel and hyperparameter comparison.
+- Cross-validation and uncertainty evaluation.
+- Future FNO training and inference.
+- Model performance reporting.
 
-Simulation Data → Structural Target Extraction → GP Model → Structural Predictions
+Potential technologies include PyTorch XPU and GPyTorch.
 
-The GP Workbench focuses on selected structure-factor-related quantities and their predictive uncertainty.
+Deployment feasibility, GPU memory consumption, and training performance will be measured during Stage II.
 
-**Pathway B — Fourier Neural Operator (Planned)**
+### 5.3 HPC Simulation Environment
 
-Simulation Data → Spatial Field Construction → FNO Model → Predicted Spatial Morphology
+The APCN research workflow uses **C++-based molecular dynamics simulations** supported by HPC resources.
 
-The FNO module will investigate mappings between spatial states to predict morphology evolution.
+The Stage I proposal identifies HKUST (Guangzhou) and Slurm-based job execution as the computational workflow for the case study.
 
-Both pathways are intended to use a common framework for data management, experiment tracking, and scientific validation where appropriate.
+Simulation outputs provide reference data for structural analysis, machine learning development, and independent validation.
 
-However, the models will require task-specific preprocessing, training configurations, and evaluation methods.
+HPC simulation execution will remain subject to researcher authorization.
 
-### 5.3 AI Agent Integration
+### 5.4 Data Management
 
-An AI Agent is planned to serve as the coordinating interface between researchers and computational tools.
+The proposed data layer will manage:
 
-The proposed workflow is:
+- Versioned scientific datasets.
+- Simulation-derived structural measurements.
+- Trained machine learning models.
+- Prediction outputs and evaluation reports.
+- Computational logs and experiment records.
 
-**Researcher Request → AI Agent → Target Selection → GP / FNO / Simulation Tools → Analysis & Visualization**
+The architecture prioritizes local model inference and controlled research data access.
 
-The framework is intended to support two complementary research approaches:
+Any transfer between local computing resources, institutional HPC systems, or optional backup services must follow applicable data-access and research collaboration requirements.
 
-**Simulation-Based Analysis**
+## 6. Case Study: Amphiphilic Polymer Conetworks
 
-Use C++ numerical simulations to investigate phase separation, characterize polymer structures, and generate reference data.
+### 6.1 Material Background
 
-**Machine Learning-Based Prediction**
+Amphiphilic Polymer Conetworks (APCNs) contain covalently connected hydrophilic and hydrophobic polymer components.
 
-Use validated surrogate models to estimate selected structural characteristics or spatial fields without repeating a complete numerical simulation for every prediction request.
+Their nanoscale phase-separated structures can influence swelling behavior, mechanical response, optical properties, and transport characteristics.
 
-The detailed integration architecture will be refined as development progresses.
+Computational simulations provide insights into the relationship between structural organization and phase-separation behavior.
 
-## 6. Model Evaluation
+### 6.2 Existing Simulation Workflow
 
-The proposed machine learning models will be evaluated against independent numerical simulation results.
+The APCN case study follows a computational research workflow involving:
 
-Evaluation procedures will be selected according to the prediction target and model architecture.
+**C++ Model Preparation → HPC Job Submission → Molecular Dynamics Simulation → Data Transfer → Python-Based Structural Analysis**
 
-### 6.1 GP Prediction Accuracy
+Scattering-related structural analysis may include:
 
-Potential evaluation criteria include:
+- Structure factors, S(q,t).
+- Scattering intensity profiles, I(q), where appropriately defined.
+- Characteristic peak wavevectors.
+- Domain spacing estimates.
+- Structural evolution over time.
 
-- Mean Absolute Error (MAE).
-- Root Mean Squared Error (RMSE).
-- Accuracy of characteristic wavevector predictions.
-- Agreement between predicted and reference structural descriptors.
-- Predictive uncertainty and probabilistic scoring.
-- Comparison with mean and linear regression baselines.
+These quantities are related but should not be treated as interchangeable without their corresponding normalization and physical definitions.
 
-Validation results will distinguish held-out predictions from models fitted to the complete available dataset.
+### 6.3 Case Study Scope
 
-### 6.2 FNO Morphology Prediction Accuracy — Planned
+The current research focuses on a specific APCN system.
 
-The FNO model will require evaluation of predicted spatial fields against corresponding reference simulation fields.
+Simulation studies can investigate selected interaction conditions, including Lennard-Jones interaction parameters, while maintaining prescribed material and temperature conditions.
 
-Potential evaluation criteria include:
+The bundled GP Workbench dataset currently uses five recipe-ratio labels. Their physical interpretation must be confirmed before identifying the model input directly with a particular polymer fraction or Lennard-Jones parameter.
 
-- Spatial field prediction error.
-- Relative L2 error.
-- Agreement of spatial morphology patterns.
+The APCN case study demonstrates how simulation-derived data can support surrogate modeling and subsequent scientific decisions.
+
+### 6.4 Example Research Scenario
+
+A researcher asks:
+
+*“What characteristic domain spacing should I expect under a proposed simulation condition, and is an additional MD run necessary?”*
+
+The proposed SimPilot workflow is:
+
+1. The AI agent interprets the research question.
+2. Available simulation datasets and prediction models are checked.
+3. A suitable Target Module prepares the requested prediction.
+4. The GP model provides a predicted value and uncertainty estimate.
+5. Candidate simulation conditions are ranked according to a validated selection strategy.
+6. The researcher reviews and approves any proposed MD run.
+7. New simulation results are used for validation and potential model updating.
+
+This scenario describes the intended integrated workflow. It should not be interpreted as proof that the full autonomous coordination and active-learning loop has already been implemented.
+
+## 7. Model Validation and Evaluation
+
+Scientific validation is a central component of the proposed platform.
+
+### 7.1 GP Validation
+
+The initial GP workflow includes:
+
+- Leave-one-recipe-out validation.
+- Separation of training and held-out observations.
+- Training-only feature preprocessing.
+- Comparison against mean and linear baselines.
+- Error and probabilistic scoring.
+- Reporting of predictive uncertainty.
+
+Model comparisons must distinguish predictions on held-out recipes from curves fitted using all available observations.
+
+### 7.2 FNO Validation — Planned
+
+Potential validation procedures include:
+
+- Independent simulation-case holdout.
+- Relative spatial field error.
+- Temporal rollout error.
+- Characteristic domain-size agreement.
 - Structure-factor consistency.
-- Characteristic domain size and phase fraction.
-- Stability of predictions over multiple time steps.
+- Comparison with reference morphology evolution.
 
-The choice of metrics will depend on the spatial field definition, temporal prediction task, and available simulation data.
+Spatial and temporal normalization parameters should be fitted using training data only.
 
-### 6.3 Generalization and Physical Consistency
+### 7.3 Stage II Performance Targets
 
-Model performance will be evaluated on appropriately separated simulation cases.
+The Stage I proposal identifies the following future evaluation targets:
 
-Where sufficient independent simulation data are available, validation may include previously unseen interaction conditions or initial configurations.
+| Metric | Proposed Target |
+|---|---|
+| Prediction error | Below 10% against an appropriately defined held-out MD reference |
+| Simulation run saving | 20% reduction at comparable prediction accuracy |
+| Agent response time | Approximately 30 seconds for the specified interaction task |
 
-Different frames from the same simulation trajectory will not be treated as fully independent simulation runs.
+Simulation run saving is defined as:
 
-For FNO-based predictions, relevant physical constraints and structural consistency checks may be considered during model development.
+**Run Saving = 1 − N_agent / N_baseline**
 
-### 6.4 Computational Efficiency
+where N represents the number of MD simulations required to reach a comparable prediction error.
 
-Computational efficiency will be evaluated by comparing:
+These values are **Stage II targets, not verified performance results**.
 
-- GP and FNO inference time.
-- Reference C++ simulation runtime.
-- Data preparation and model training costs.
-- Computational resources required for repeated prediction tasks.
+The evaluation protocol, baseline definition, uncertainty calibration, and computational cost measurements will be documented alongside future benchmarks.
 
-Claims of computational acceleration will be supported by measured results rather than assumed from model architecture alone.
+## 8. Repository Structure
 
-## 7. Repository Structure
+The repository is organized to separate scientific documentation, machine learning components, and future agent integration.
 
-The repository is organized into the following components:
+Principal components include:
 
-- **docs/** — Project documentation, references, meeting notes, and system architecture.
-- **gp-workbench/** — Existing GP-based structural prediction and evaluation tools.
-- **notebooks/** — Jupyter notebooks for data exploration and machine learning experiments.
-- **src/** — Source code for system integration, computational utilities, and AI Agent development.
-- **tests/** — Testing and validation scripts.
-- **requirements.txt** — Python package dependencies for applicable project components.
-- **README.md** — Project overview and development information.
+- **docs/** — Proposal documents, meeting notes, scientific references, and system design.
+- **GP Workbench** — Existing structural-target extraction, GP training, prediction, and validation tools.
+- **notebooks/** — Exploratory research and machine learning experiments.
+- **src/** — Shared computational tools and application integration.
+- **tests/** — Program and model validation.
+- **README.md** — Main project introduction.
 
-**Planned extension:**
+Planned additions include:
 
-- **fno-workbench/** — Future FNO data preprocessing, model implementation, training, and evaluation.
+- **FNO module** — Spatial field preparation, neural operator architectures, training, and evaluation.
+- **AI Agent module** — Local LLM inference, tool interfaces, orchestration, and researcher approval workflows.
+- **Benchmark documentation** — Reproducible performance tests and simulation-run comparisons.
 
-The existing numerical simulation software is written in C++. Its integration and distribution within this repository will depend on the final project architecture and applicable access permissions.
+The exact package paths and installation instructions are maintained with the corresponding code components.
 
-The FNO module may require a separate deep learning environment and hardware-specific dependencies.
+Research data and source code must be shared in accordance with their applicable ownership, attribution, and licensing requirements.
 
-## 8. Development Roadmap
+## 9. Development Roadmap
 
-### Phase 1 — Project Planning
+### Stage I — Initial Prototype
 
-- [x] Initialize the GitHub repository.
-- [x] Establish the initial repository structure.
-- [x] Identify the initial GP structural prediction targets.
-- [ ] Finalize the integrated GP / FNO / AI Agent architecture.
-- [ ] Complete the review of relevant scientific literature.
+- [x] Establish the project repository.
+- [x] Prepare initial simulation-derived datasets.
+- [x] Develop the GP Workbench.
+- [x] Implement selected structural-target extraction methods.
+- [x] Implement initial GP model comparison and evaluation tools.
+- [x] Define the proposed system architecture.
+- [ ] Complete an independently validated end-to-end agent workflow.
+- [ ] Complete APCN-specific FNO development and validation.
 
-### Phase 2 — Gaussian Process Development
+### Stage II — Deployment and Evaluation Plan
 
-- [x] Prepare and preprocess initial simulation-derived data.
-- [x] Develop and conduct preliminary evaluation of the GP-based surrogate model.
-- [ ] Confirm the physical definitions and input variables for expanded prediction tasks.
-- [ ] Validate model predictions against independent simulation results.
-- [ ] Assess predictive uncertainty and generalization.
-- [ ] Evaluate computational efficiency relative to C++ simulations.
+**November 2026 — Deployment**
 
-### Phase 3 — Fourier Neural Operator Development
+- [ ] Prepare ASUS UGen development hardware.
+- [ ] Deploy and test a compatible local LLM.
+- [ ] Evaluate GP execution on Intel GPU hardware.
+- [ ] Develop and test the initial FNO pipeline.
+- [ ] Integrate AI agent tool interfaces.
 
-- [ ] Confirm the availability of spatial simulation data.
-- [ ] Define the FNO input and output field representations.
-- [ ] Prepare spatial field datasets from C++ simulation outputs.
-- [ ] Develop an initial FNO proof of concept.
-- [ ] Evaluate spatial morphology prediction accuracy.
-- [ ] Investigate physics-informed constraints and temporal prediction stability.
-- [ ] Assess computational performance and GPU requirements.
+**Late November to Early December 2026 — Measurement**
 
-### Phase 4 — AI Agent Integration
+- [ ] Evaluate held-out prediction accuracy.
+- [ ] Compare simulation recommendations against a defined baseline.
+- [ ] Measure model training and inference performance.
+- [ ] Record GPU memory consumption.
+- [ ] Measure end-to-end agent response time.
+- [ ] Validate researcher approval and logging workflows.
 
-- [ ] Design the AI Agent workflow and model interfaces.
-- [ ] Integrate available GP prediction and analysis tools.
-- [ ] Integrate the FNO model after independent validation.
-- [ ] Implement automated visualization and reporting.
-- [ ] Evaluate end-to-end system performance.
+**December 2026 — Delivery**
 
-## 9. Expected Outcomes
+- [ ] Prepare a reproducible demonstration.
+- [ ] Finalize technical documentation.
+- [ ] Publish approved benchmark results.
+- [ ] Prepare the demonstration video and final presentation.
 
-The proposed framework aims to:
+The proposed milestones are subject to competition progress, resource availability, and scientific validation results.
 
-1. Demonstrate the feasibility of GP-based prediction of scattering-related structural characteristics in APCNs.
-2. Investigate FNO-based prediction of spatial phase-separated morphology and its temporal evolution.
-3. Develop a modular prediction framework supporting different scientific research targets.
-4. Reduce the need for repetitive numerical simulations within validated parameter ranges.
-5. Establish an integrated workflow connecting C++ simulations, machine learning, and structural analysis.
-6. Develop an AI Agent-assisted interface for coordinating computational research tasks.
-7. Support future development of AI-assisted polymer material analysis and design.
+## 10. Expected Impact
 
-## 10. References
+SimPilot aims to provide a reusable foundation for AI-assisted computational research.
 
-Relevant scientific publications and technical documentation are collected in:
+Potential benefits include:
+
+1. **Reduced Simulation Overhead:** Avoid selected repetitive computations through validated surrogate predictions.
+2. **More Informative Simulation Selection:** Prioritize new simulations based on model uncertainty and research objectives.
+3. **Researcher-Controlled Automation:** Integrate intelligent tool orchestration with explicit scientific oversight.
+4. **Flexible Prediction Targets:** Support scalar and spatial-field models within a modular architecture.
+5. **Local Computing and Data Control:** Enable on-premise AI inference and controlled research data management.
+6. **Scientific Reproducibility:** Preserve clear records of datasets, model configurations, validation results, and computational decisions.
+
+The longer-term vision is to extend SimPilot beyond the initial APCN case study to other simulation-intensive research applications.
+
+## 11. References
+
+Relevant scientific publications and technical resources are collected in:
 
 **[View References](docs/references.md)**
 
-The references cover:
+Topics include:
 
-- Amphiphilic Polymer Conetworks and nanoscale phase separation.
-- Viscoelastic phase separation and structural evolution.
+- Amphiphilic Polymer Conetworks.
+- Viscoelastic phase separation.
 - Gaussian Process modeling.
-- Machine learning in polymer research.
-- Fourier Neural Operators and scientific machine learning.
-- Scattering-based structural characterization.
-- AI Agents and scientific workflow automation.
+- Polymer machine learning.
+- Fourier Neural Operators, U-FNO, and MHNO.
+- Scientific machine learning and structural validation.
+- AI agents and computational workflow automation.
 
-An important methodological reference for the proposed FNO module is:
+## 12. Development Status and Limitations
 
-**Li et al. (2021)** — "Fourier Neural Operator for Parametric Partial Differential Equations." *International Conference on Learning Representations (ICLR).*
+SimPilot is under active research and development.
 
-Publication: https://mlanthology.org/iclr/2021/li2021iclr-fourier/
+**Available Components**
 
-## 11. Project Status
+- Initial GP Workbench.
+- Selected structure-factor-derived prediction targets.
+- Kernel and baseline model comparisons.
+- Local GP research interface.
+- Initial simulation-derived example datasets and evaluation procedures.
 
-This repository is currently under development for the **ASUS UGen AI League 2026 Stage I Proposal**.
+**In Development / Planned**
 
-The project builds upon C++ numerical simulations and an initial Gaussian Process Workbench for structural prediction and model evaluation.
+- Full local LLM and AI Agent integration.
+- Automated candidate simulation ranking.
+- Human-in-the-loop HPC orchestration.
+- FNO-based spatial morphology prediction.
+- Integrated GPU deployment on ASUS UGen hardware.
+- End-to-end acceleration benchmarks.
 
-The proposed Fourier Neural Operator module is a future research component intended to investigate full-field morphology prediction.
+Current results should be interpreted within the limitations of the available datasets and evaluation protocols.
 
-The AI Agent integration, unified workflow, additional validation, and computational acceleration assessment remain under development.
+The platform does not claim to replace molecular dynamics simulations, guarantee accurate extrapolation, or provide experimentally validated material properties without further scientific verification.
 
-The current GP implementation and the proposed FNO module address different prediction targets and should not be interpreted as having equivalent levels of implementation or validation.
+---
 
-Detailed technical specifications, quantitative evaluations, and research results will be updated as the project progresses.
+**SimPilot — Predict. Act. Verify.**
