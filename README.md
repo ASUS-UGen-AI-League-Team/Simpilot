@@ -162,6 +162,8 @@ The definitions and availability of these targets must be confirmed for each dat
 
 ### 4.2 Fourier Neural Operator — Planned
 
+For the proposed model architectures, data requirements, and validation strategy, see the **[FNO Technical Documentation](docs/fno-model.md)**.
+
 The **Fourier Neural Operator (FNO)** is proposed as an additional machine learning component for predicting spatial morphology fields.
 
 Unlike scalar regression models, neural operators can learn mappings between spatially distributed input and output fields.
