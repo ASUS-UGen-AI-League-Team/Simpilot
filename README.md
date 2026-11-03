@@ -116,6 +116,8 @@ The full AI agent monitoring and approval workflow remains a planned integration
 
 ## 4. Machine Learning Framework
 
+For implementation details, prediction targets, available features, and validation procedures, see the **[GP Workbench Documentation](docs/gp-workbench.md)**.
+
 ### 4.1 Gaussian Process Workbench
 
 The **Gaussian Process (GP) Workbench** is the initial machine learning component of SimPilot.
