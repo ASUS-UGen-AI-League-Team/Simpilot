@@ -134,6 +134,36 @@ Publication: https://www.microsoft.com/en-us/research/publication/autogen-enabli
 
 **Relevance:** Provides a methodological reference for agent coordination, tool utilization, and AI-assisted workflow automation.
 
+**[13] Z. Li et al. (2021)**
+
+"Fourier Neural Operator for Parametric Partial Differential Equations."
+
+*International Conference on Learning Representations (ICLR)*, 2021.
+
+Link: https://arxiv.org/abs/2010.08895
+
+**Relevance:** Introduces the Fourier Neural Operator for learning mappings between functions and approximating PDE solution operators.
+
+**[14] G. Wen et al. (2022)**
+
+"U-FNO—An Enhanced Fourier Neural Operator-Based Deep-Learning Model for Multiphase Flow."
+
+*Advances in Water Resources*, vol. 163, Art. no. 104180, 2022.
+
+DOI: https://doi.org/10.1016/j.advwatres.2022.104180
+
+**Relevance:** Extends FNO with a U-Net-inspired architecture for predicting multiphase flow behavior.
+
+**[15] M. S. Eshaghi et al. (2025)**
+
+"Multi-Head Neural Operator for Modelling Interfacial Dynamics."
+
+*arXiv*, arXiv:2507.17763, 2025.
+
+Link: https://arxiv.org/abs/2507.17763
+
+**Relevance:** Introduces MHNO for predicting time-dependent interfacial dynamics using multiple output heads and temporal connections.
+
 ---
 
 ## Citation Scope
